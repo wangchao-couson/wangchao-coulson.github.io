@@ -37,7 +37,7 @@ npm install hexo-deployer-git --save
 hexo clean && hexo deploy //官网文档写的不好，写的使用hexo deploy 命令，实际使用hexo clean && hexo deploy 组合命令能避免本地缓存
 ```
 
-4. 配置主题
+4. 配置主题(推荐，但是非必要)
 默认的主题比较简陋，甚至可能无法正常显示，因此需要安装一个自己喜欢的主题，主题可以在主题市场上找到 https://hexo.io/themes/
 这里以**next**主题为例：https://github.com/next-theme/hexo-theme-next
 ```bash
@@ -52,6 +52,25 @@ theme: next
 最后重新发布
 hexo clean && hexo deploy
 ```
+5. 配置博客站点同步
+完成上述配置后博客能正常运行，但是github仓库中仅仅同步了发布的文档，并没有同步博客站点配置文件、md源文件和themes等文件，如果需要在其他电脑上工作则无法更新博客站
+
+因此在原有 https://github.com/wangchao-couson/wangchao-coulson.github.io 仓库上创建新分支**hexo**，用于同步博客站点配置数据
+```bash
+https://github.com/wangchao-couson/wangchao-coulson.github.io 仓库上创建新分支**hexo**
+本地blog目录下执行如下命令
+git init
+git checkout -b hexo
+git remote add origin git@github.com:wangchao-couson/wangchao-coulson.github.io.git    
+git branch --set-upstream-to=origin/hexo hexo   
+git add .
+git commit -m "init"
+git config pull.rebase true //解决git push origin hexo:master 时出现rejected错误
+git pull
+git push
+```
+
+此后，在任意电脑上同步hexo分支，就可以更新博客站点了
 
 
 
