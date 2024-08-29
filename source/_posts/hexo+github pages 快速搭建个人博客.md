@@ -19,7 +19,9 @@ hexo server
 
 ## step3 关联本地blog 和 github pages
 参考官网教程(https://hexo.io/zh-cn/docs/one-command-deployment)
-1.编辑_config.yml文件内容如下
+
+1. 编辑_config.yml文件内容如下
+
 ```
 deploy:
   type: git
@@ -27,12 +29,14 @@ deploy:
   branch: main
 ```
 2. 安装发布工具(deployer)
+
 该工具能将./source/_posts目录中的md文件编译成html文件并设置相关配置然后推送到前面配置好的仓库中
 发布工具有多种可选，这里以git作为发布工具，安装命令如下
 ```
 npm install hexo-deployer-git --save
 ```
 3. 发布上线
+
 ```
 hexo clean && hexo deploy //官网文档写的不好，写的使用hexo deploy 命令，实际使用hexo clean && hexo deploy 组合命令能避免本地缓存
 ```
@@ -83,6 +87,7 @@ $ hexo deploy -g //生成网站并部署到 GitHub,也可以使用 hexo generate
 
 ## 问题排查
 1. 无法访问 https://wangchao-couson.github.io ,提示404错误
+
 按照官网的教程，执行完上面的步骤，按道理是已经完成了blog的部署和发布，且可以正确访问 https://wangchao-couson.github.io 了，实际上并不能
 继续查看文档发现在 https://docs.github.com/en/pages/quickstart 一文中提到需要设置 一个“Branch”，简要步骤如下
 ```
